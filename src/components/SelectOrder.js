@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import './SelectCategory.css';
+import './SelectOrder.css';
 
-class SelectCategory extends Component {
+class SelectOrder extends Component {
 
 	constructor(){
 		super();
@@ -17,15 +17,12 @@ class SelectCategory extends Component {
 	render() {
 	    return (
 	    	<select className="form-select selCateg" onChange={this.handleChange}>
-	    		<option value="all">ALL</option>
-	    		<option value="A">A</option>
-	    		<option value="B">B</option>
-	    		<option value="C">C</option>
-	    		<option value="D">D</option>
+	    		<option value="asc">ASC</option>
+	    		<option value="desc">DESC</option>
 	    	</select>
 	    );
 	}
 }
 
 
-export default SelectCategory;
+export default SelectOrder;

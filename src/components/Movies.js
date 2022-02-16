@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MovieList from './MovieList.js';
 import FilterRating from './FilterRating.js';
 import SelectCategory from './SelectCategory.js';
+import SelectOrder from './SelectOrder.js';
 import Search from './Search.js';
 import MovieService from '../services/MovieService.js';
 
@@ -14,12 +15,14 @@ class Movies extends Component {
 	    this.state = {
 	        movies: [],
 	        rating: 5,
-	        category:"all",
+	        category: "all",
+	        order: "asc",
 	        search: ""
 	    };
 
 	    this.changeRating = this.changeRating.bind(this);
 	    this.changeCategory = this.changeCategory.bind(this);
+	    this.changeOrder = this.changeOrder.bind(this);
 	    this.changeSearch = this.changeSearch.bind(this);
 	}
 
@@ -29,6 +32,10 @@ class Movies extends Component {
 
 	changeCategory(c){
 		this.setState({category : c});
+	}
+
+	changeOrder(o){
+		this.setState({order : o});
 	}
 
 	changeSearch(s){
@@ -42,30 +49,25 @@ class Movies extends Component {
 	render() {
 	    return (
 	        <div className="container-fluid" style={{marginLeft: '-15px'}}>
-	        	<div className="d-flex flex-row">                    
+	        	<div className="d-flex flex-row filterBar">                    
 	                <div className="col-sm-12">
-	                    <FilterRating rating="1" style={this.state.rating==1? "badge-primary" :"badge-secondary"} handleClick={this.changeRating} />
-	                    <FilterRating rating="2" style={this.state.rating==2? "badge-primary" :"badge-secondary"}handleClick={this.changeRating}/>
-	                    <FilterRating rating="3" style={this.state.rating==3? "badge-primary" :"badge-secondary"}handleClick={this.changeRating}/>
-	                    <FilterRating rating="4" style={this.state.rating==4? "badge-primary" :"badge-secondary"}handleClick={this.changeRating}/>
-	                    <FilterRating rating="5" style={this.state.rating==5? "badge-primary" :"badge-secondary"}handleClick={this.changeRating}/>
-	                </div>
-	            </div>
-	            <div className="col-sm-12">{this.state.rating}</div>
-	            <div className="col-sm-12">
-	            	<SelectCategory handleChange={this.changeCategory} />
-	            	{this.state.category}
-	            </div>
-	            <div className="col-sm-12">
-	            	<Search handleChange={this.changeSearch} />
-	            	{this.state.search}
+		                <FilterRating rating="1" style={this.state.rating>=1? "badge-primary" :"badge-secondary"} handleClick={this.changeRating} />
+		                <FilterRating rating="2" style={this.state.rating>=2? "badge-primary" :"badge-secondary"}handleClick={this.changeRating}/>
+		                <FilterRating rating="3" style={this.state.rating>=3? "badge-primary" :"badge-secondary"}handleClick={this.changeRating}/>
+		                <FilterRating rating="4" style={this.state.rating>=4? "badge-primary" :"badge-secondary"}handleClick={this.changeRating}/>
+		                <FilterRating rating="5" style={this.state.rating==5? "badge-primary" :"badge-secondary"}handleClick={this.changeRating}/>
+	            		<SelectCategory handleChange={this.changeCategory} />
+	            		<SelectOrder handleChange={this.changeOrder} />
+	            		<Search handleChange={this.changeSearch} />
+	            	</div>
 	            </div>
 	            <div className="d-flex flex-row">                    
 	                <div className="col-sm-12">
 	                    <MovieList movies={this.state.movies} 
 	                    		   rating={this.state.rating} 
 	                    		   category={this.state.category}
-	                    		   search = {this.state.search} />
+	                    		   search = {this.state.search}
+	                    		   order = {this.state.order} />
 	                </div>
 	            </div>
 	        </div>

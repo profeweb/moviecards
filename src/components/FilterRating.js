@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './FilterRating.css';
+
 class FilterRating extends Component {
 
 	constructor(){
@@ -13,8 +15,9 @@ class FilterRating extends Component {
 
 
 	render() {
+		const style = this.props.style + " filterRating"
 	    return (
-	    	<button className={this.props.style} onClick={this.handleClick}>
+	    	<button className= {style} onClick={this.handleClick}>
 	    		<i className="fa fa-star fa-lg"></i> {this.props.rating}
 	    	</button>
 	    );

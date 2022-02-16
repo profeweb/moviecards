@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './Search.css';
+
 class Search extends Component {
 
 	constructor(){
@@ -14,7 +16,9 @@ class Search extends Component {
 
 	render() {
 	    return (
-	    	<input type="text" className="form-control"  onChange={this.handleChange} />
+	    	<div className="form-group mb-2 searchFilter">
+	    		<input type="text" className="form-control" onChange={this.handleChange} />
+	    	</div>
 	    );
 	}
 }
