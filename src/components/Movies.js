@@ -4,6 +4,7 @@ import FilterRating from './FilterRating.js';
 import SelectCategory from './SelectCategory.js';
 import SelectOrder from './SelectOrder.js';
 import Search from './Search.js';
+import Search2 from './Search2.js';
 import MovieService from '../services/MovieService.js';
 
 import './Movies.css';
